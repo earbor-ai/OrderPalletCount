@@ -9,8 +9,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        string filePath = "C:/Users/pc/Downloads/Earbor_Timesheets/Data.xlsx";
-        GetExcelDataTable(filePath);
+        //string filePath = "C:/Users/pc/Downloads/Earbor_Timesheets/Data.xlsx";
+        string[] fileEntries = Directory.GetFiles("../../../Inbound");
+        foreach (string filePath in fileEntries)
+        {
+            string extension = Path.GetExtension(filePath);
+            if (extension == ".xls" || extension == ".xlsx")
+            {
+                GetExcelDataTable(filePath);
+            }
+        }
         Console.ReadLine();
     }
     public static async Task GetExcelDataTable(string filePath)
